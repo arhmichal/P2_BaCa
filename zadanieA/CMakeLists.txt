@@ -5,7 +5,6 @@ include_directories(src)
 include_directories(UT)
 
 add_executable(ZadanieA_UT
-        #        UT/otherTests.cpp
         UT/OrderTest.cpp
         UT/SetArythmeticsTest.cpp
         UT/ComparationTest.cpp
