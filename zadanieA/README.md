@@ -1,12 +1,13 @@
-A - Operacje zbiorowe
-[Szczegóły](https://p2.ii.uj.edu.pl/#ProblemDescription/1)
-[Statystyki](https://p2.ii.uj.edu.pl/#ProblemStatistics/1)
-[Treść](https://p2.ii.uj.edu.pl/#ProblemContent/1)
-[Wysyłanie](https://p2.ii.uj.edu.pl/#SendSubmit/1)
+# Programowanie 2 BaCa
 
-[[poprawiony link do treści](https://ww2.ii.uj.edu.pl/~kawa/intra/2017_2018_Programowanie_2/2017_2018_Programowanie_2_Zadanie_A.pdf)]
+[>>> BaCa zadanka <<<](https://p2.ii.uj.edu.pl/#ProblemsPanel)
 
-# treść
+| Zadanie | Start zadania | Termin oddania | Koniec zdania |
+|---|:---|:---:|---:|
+| A - Operacje zbiorowe [Szczegóły](https://p2.ii.uj.edu.pl/#ProblemDescription/1) [Statystyki](https://p2.ii.uj.edu.pl/#ProblemStatistics/1) [Treść](https://p2.ii.uj.edu.pl/#ProblemContent/1) [Wysyłanie](https://p2.ii.uj.edu.pl/#SendSubmit/1) | 2018-03-13 10:00:15 | 2018-03-20 10:00:15 | 2018-03-27 10:00:15 |
+| [[poprawiony link do treści](https://ww2.ii.uj.edu.pl/~kawa/intra/2017_2018_Programowanie_2/2017_2018_Programowanie_2_Zadanie_A.pdf)] ||||
+
+# Treść Zadania
 
 ###### Instytut Informatyki i Matematyki Komputerowej UJ
 ###### Programowanie 2, semestr zimowy 2017/2018
@@ -20,7 +21,7 @@ A - Operacje zbiorowe
 * Zadanie polega na implementacji podprogramów obsługujących operacje na zbiorach obejmujących pięcioelementowe ciągi znaków 0 lub 1 nazywanych dalej prosto *zbiorami*.
 * kod rozwiązania nie może stosować:
     - znaków kwadratowych nawiasów i ich równowarzników.
-    - słów kluczowych pętli, czyli **for** , **while** oraz **goto**.
+    - słów kluczowych pętli, czyli **for**, **while** oraz **goto**.
     - rekordów, czyli słów kluczowych **struct** oraz **class**.
     - znaków operatorów + oraz -.
     - poleceń obsługi pamięci dynamicznej.
