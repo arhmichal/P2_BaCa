@@ -6,7 +6,7 @@ A - Operacje zbiorowe
 
 [[poprawiony link do treści](https://ww2.ii.uj.edu.pl/~kawa/intra/2017_2018_Programowanie_2/2017_2018_Programowanie_2_Zadanie_A.pdf)]
 
-#treść
+# treść
 
 ###### Instytut Informatyki i Matematyki Komputerowej UJ
 ###### Programowanie 2, semestr zimowy 2017/2018
