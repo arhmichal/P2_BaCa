@@ -21,7 +21,7 @@
 * Zadanie polega na implementacji podprogramów obsługujących operacje na zbiorach obejmujących pięcioelementowe ciągi znaków 0 lub 1 nazywanych dalej prosto *zbiorami*.
 * kod rozwiązania nie może stosować:
     - znaków kwadratowych nawiasów i ich równowarzników.
-    - słów kluczowych pętli, czyli **for** , **while** oraz **goto**.
+    - słów kluczowych pętli, czyli **for**, **while** oraz **goto**.
     - rekordów, czyli słów kluczowych **struct** oraz **class**.
     - znaków operatorów + oraz -.
     - poleceń obsługi pamięci dynamicznej.
