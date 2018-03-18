@@ -3,7 +3,7 @@
 [NaN NaN NaN NaN NaN NaN NaN NaN BaCa](https://p2.ii.uj.edu.pl/#ProblemsPanel)
 
 A - Operacje zbiorowe
-[[więcej](tree/master/zadanieA)]
+[[więcej](https://github.com/arhmichal/P2_BaCa/tree/master/zadanieA)]
 [Szczegóły](https://p2.ii.uj.edu.pl/#ProblemDescription/1)
 [Statystyki](https://p2.ii.uj.edu.pl/#ProblemStatistics/1)
 [Treść](https://p2.ii.uj.edu.pl/#ProblemContent/1)
