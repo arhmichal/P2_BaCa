@@ -1,12 +1,10 @@
-# A - Operacje zbiorowe
+A - Operacje zbiorowe
 [Szczegóły](https://p2.ii.uj.edu.pl/#ProblemDescription/1)
 [Statystyki](https://p2.ii.uj.edu.pl/#ProblemStatistics/1)
 [Treść](https://p2.ii.uj.edu.pl/#ProblemContent/1)
 [Wysyłanie](https://p2.ii.uj.edu.pl/#SendSubmit/1)
 
-[poprawiony link do treści](https://ww2.ii.uj.edu.pl/~kawa/intra/2017_2018_Programowanie_2/2017_2018_Programowanie_2_Zadanie_A.pdf)
-
-
+[[poprawiony link do treści](https://ww2.ii.uj.edu.pl/~kawa/intra/2017_2018_Programowanie_2/2017_2018_Programowanie_2_Zadanie_A.pdf)]
 
 #treść
 
