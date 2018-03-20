@@ -5,3 +5,4 @@ set(CMAKE_CXX_STANDARD 98)
 
 add_subdirectory(googletest)
 add_subdirectory(zadanieA)
+add_subdirectory(zadanieB)
