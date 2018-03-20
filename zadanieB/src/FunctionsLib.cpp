@@ -1,93 +1,81 @@
 #include "FunctionsLib.hpp"
 
-std::string Sum(int, const std::string*)
+std::string Sum(int numOfArgs, const std::string* args)
 {
     return "";
 }
 
-std::string Sum(int, ...)
+std::string Sum(int numOfArgs, ...)
 {
     return "";
 }
 
-void Sum(std::string*, int, const std::string*)
+void Sum(std::string* ret, int numOfArgs, const std::string* args)
 {
-    return;
 }
 
-void Sum(std::string*, int, ...)
+void Sum(std::string* ret, int numOfArgs, ...)
 {
-    return;
 }
 
-void Sum(std::string&, int, const std::string*)
+void Sum(std::string& ret, int numOfArgs, const std::string* args)
 {
-    return;
 }
 
-void Sum(std::string&, int, ...)
+void Sum(std::string& ret, int numOfArgs, ...)
 {
-    return;
 }
 
 
-std::string Mult(int, const std::string*)
+std::string Mult(int numOfArgs, const std::string* args)
 {
     return "";
 }
 
-std::string Mult(int, ...)
+std::string Mult(int numOfArgs, ...)
 {
     return "";
 }
 
-void Mult(std::string*, int, const std::string*)
+void Mult(std::string* ret, int numOfArgs, const std::string* args)
 {
-    return;
 }
 
-void Mult(std::string*, int, ...)
+void Mult(std::string* ret, int numOfArgs, ...)
 {
-    return;
 }
 
-void Mult(std::string&, int, const std::string*)
+void Mult(std::string& ret, int numOfArgs, const std::string* args)
 {
-    return;
 }
 
-void Mult(std::string&, int, ...)
+void Mult(std::string& ret, int numOfArgs, ...)
 {
-    return;
 }
 
 
-std::string Operation(std::string(*)(int, const std::string*), const std::string*)
+std::string Operation(std::string(*)(int numOfArgs, const std::string* args), const std::string* args)
 {
     return "";
 }
 
-std::string Operation(std::string(*)(int, const std::string*), ...)
+std::string Operation(std::string(*)(int numOfArgs, const std::string* args), ...)
 {
     return "";
 }
 
-void Operation(std::string*, std::string(*)(int, const std::string*), const std::string*)
+void Operation(std::string* ret, std::string(*)(int numOfArgs, const std::string* args), const std::string* args)
 {
-    return;
 }
 
-void Operation(std::string*, std::string(*)(int, const std::string*), ...)
+void Operation(std::string* ret, std::string(*)(int numOfArgs, const std::string* args), ...)
 {
-    return;
 }
 
-void Operation(std::string&, std::string(*)(int, const std::string*), const std::string*)
+void Operation(std::string& ret, std::string(*)(int numOfArgs, const std::string* args), const std::string* args)
 {
-    return;
 }
 
-void Operation(std::string&, std::string(*)(int, const std::string*), ...)
+void Operation(std::string& ret, std::string(*)(int numOfArgs, const std::string* args), ...)
 {
-    return;
 }

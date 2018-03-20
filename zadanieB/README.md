@@ -40,7 +40,7 @@ void Operation(string*, string(*)(int, const string*), ...);
 void Operation(string&, string(*)(int, const string*), const string*);
 void Operation(string&, string(*)(int, const string*), ...);
 ```
-* Podprogramy o nazwach ```Sum``` oraz ```Mult``` implementyją odpowiednio sumowanie oraz mnożenie dowolnie dużych liczb całkowitych w dowolnej dużel ilości, z argumentami i zwracanymi wartościami przekazywanymi w formie ciągów znakowych.
+* Podprogramy o nazwach ```Sum``` oraz ```Mult``` implementyją odpowiednio sumowanie oraz mnożenie dowolnie dużych liczb całkowitych w dowolnej dużej ilości, z argumentami i zwracanymi wartościami przekazywanymi w formie ciągów znakowych.
 * Podprogramy o identyfikatorach ```Operation``` implementują możliwość zastosowania w pojedyńczym wywołaniu jednego z podprogramów ```Sum``` lub ```Mult``` przekazywanego w argumencie wraz z pozostałymi koniecznymi argumentami
 * Ponadto:
   * Wartości zwracane przez podprogramy zawsze służą przekazaniu wyników działań.
