@@ -19,33 +19,33 @@
 
 * Zadanie polega na implementacji zbioru podprogramów zgodnych z poniższymi nagłówkami:
 ```c++
-string Sum(int, const string*);
-string Sum(int, ...);
-void Sum(string*, int, const string*);
-void Sum(string*, int, ...);
-void Sum(string&, int, const string*);
-void Sum(string&, int, ...);
+std::string Sum(int numOfArgs, const std::string* args);
+std::string Sum(int numOfArgs, ...);
+void Sum(std::string* ret, int numOfArgs, const std::string* args);
+void Sum(std::string* ret, int numOfArgs, ...);
+void Sum(std::string& ret, int numOfArgs, const std::string* args);
+void Sum(std::string& ret, int numOfArgs, ...);
 
-string Mult(int, const string*);
-string Mult(int, ...);
-void Mult(string*, int, const string*);
-void Mult(string*, int, ...);
-void Mult(string&, int, const string*);
-void Mult(string&, int, ...);
+std::string Mult(int numOfArgs, const std::string* args);
+std::string Mult(int numOfArgs, ...);
+void Mult(std::string* ret, int numOfArgs, const std::string* args);
+void Mult(std::string* ret, int numOfArgs, ...);
+void Mult(std::string& ret, int numOfArgs, const std::string* args);
+void Mult(std::string& ret, int numOfArgs, ...);
 
-string Operation(string(*)(int, const string*), const string*);
-string Operation(string(*)(int, const string*), ...);
-void Operation(string*, string(*)(int, const string*), const string*);
-void Operation(string*, string(*)(int, const string*), ...);
-void Operation(string&, string(*)(int, const string*), const string*);
-void Operation(string&, string(*)(int, const string*), ...);
+std::string Operation(std::string(*fun)(int, const std::string*), int numOfArgs, const std::string* args);
+std::string Operation(std::string(*fun)(int, const std::string*), int numOfArgs, ...);
+void Operation(std::string* ret, std::string(*fun)(int, const std::string*), int numOfArgs, const std::string* args);
+void Operation(std::string* ret, std::string(*fun)(int, const std::string*), int numOfArgs, ...);
+void Operation(std::string& ret, void(*fun)(std::string*, int, const std::string*), int numOfArgs, const std::string* args);
+void Operation(std::string& ret, void(*fun)(std::string*, int, const std::string*), int numOfArgs, ...);
 ```
 * Podprogramy o nazwach ```Sum``` oraz ```Mult``` implementyją odpowiednio sumowanie oraz mnożenie dowolnie dużych liczb całkowitych w dowolnej dużej ilości, z argumentami i zwracanymi wartościami przekazywanymi w formie ciągów znakowych.
 * Podprogramy o identyfikatorach ```Operation``` implementują możliwość zastosowania w pojedyńczym wywołaniu jednego z podprogramów ```Sum``` lub ```Mult``` przekazywanego w argumencie wraz z pozostałymi koniecznymi argumentami
 * Ponadto:
   * Wartości zwracane przez podprogramy zawsze służą przekazaniu wyników działań.
   * Argumenty całkowite zawsze oznaczają ilość argumentów działań i wynoszą nie mniej niż 2.
-  * Pierwsze zrgumenty wskaźnikowe lub referencyjne zawsze służą zwruceniu efektów działań.
+  * Pierwsze argumenty wskaźnikowe lub referencyjne zawsze służą zwruceniu efektów działań.
   * Ostatnie argumenty wskaźnikowe służą przekazaniu liczb podlegających działaniom.
   * Argumenty adresowe podprogramów odnoszą się do istniejących podprogramów `Sum` lub `Mult`.
 * W przekazywanym ba BaCę kodzie źródłowym nie jest możliwe włączenie jakichkolwiek plików, ale można założyć dostepność plików nagłówkowych `iostream`, `string`, `cstdarg`.
