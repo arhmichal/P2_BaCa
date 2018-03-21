@@ -1,100 +1,138 @@
 #include "FunctionsLib.hpp"
 
-std::string Sum(int noOfArgs, const std::string* args)
+std::string Sum(const std::string& num1, const std::string& num2)
 {
-    std::cout << "DEBUG/ called Sum(" << noOfArgs << ", " << *args << ");\n";
-    return "";
+    std::cout << "DEBUG/ " << "return " << num1 << "+" << num2 << '\n';
+    return num2; // TODO implement
 }
 
-std::string Sum(int noOfArgs, ...)
+std::string Sum(int numOfArgs, const std::string* args)
 {
-    std::cout << "DEBUG/ called Sum(" << noOfArgs << ", ... );\n";
+    std::string sum = "0";
+    while((numOfArgs--) > 0)
+        sum = Sum(sum, args[numOfArgs]);
+    return sum;
+}
+
+std::string Sum(int numOfArgs, ...)
+{
+    std::string sum = "0";
     va_list args;
-    va_start(args, noOfArgs);
+    va_start(args, numOfArgs);
+    while((numOfArgs--) > 0)
+        sum = Sum(sum, *va_arg(args, std::string*));
     va_end(args);
-    return "";
+    return sum;
 }
 
-void Sum(std::string* ret, int noOfArgs, const std::string* args)
+void Sum(std::string* ret, int numOfArgs, const std::string* args)
 {
-    std::cout << "DEBUG/ called Sum(*ret, " << noOfArgs << ", " << *args << ");\n";
-    *ret = Sum(noOfArgs, args);
+    *ret = Sum(numOfArgs, args);
 }
 
-void Sum(std::string* ret, int noOfArgs, ...)
+void Sum(std::string* ret, int numOfArgs, ...)
 {
-    std::cout << "DEBUG/ called Sum(*ret, " << noOfArgs << ", ... );\n";
     va_list args;
-    va_start(args, noOfArgs);
-    *ret = Sum(noOfArgs, args);
-    va_end(args);
-}
-
-void Sum(std::string& ret, int noOfArgs, const std::string* args)
-{
-    std::cout << "DEBUG/ called Sum(&ret, " << noOfArgs << ", " << *args << ");\n";
-    ret = Sum(noOfArgs, args);
-}
-
-void Sum(std::string& ret, int noOfArgs, ...)
-{
-    std::cout << "DEBUG/ called Sum(&ret, " << noOfArgs << ", ... );\n";
-    va_list args;
-    va_start(args, noOfArgs);
-    ret = Sum(noOfArgs, args);
+    va_start(args, numOfArgs);
+    *ret = Sum(numOfArgs, args);
     va_end(args);
 }
 
-
-std::string Mult(int, const std::string*)
+void Sum(std::string& ret, int numOfArgs, const std::string* args)
 {
-    return "";
+    ret = Sum(numOfArgs, args);
 }
 
-std::string Mult(int, ...)
+void Sum(std::string& ret, int numOfArgs, ...)
 {
-    return "";
-}
-
-void Mult(std::string*, int, const std::string*)
-{
-}
-
-void Mult(std::string*, int, ...)
-{
-}
-
-void Mult(std::string&, int, const std::string*)
-{
-}
-
-void Mult(std::string&, int, ...)
-{
+    va_list args;
+    va_start(args, numOfArgs);
+    ret = Sum(numOfArgs, args);
+    va_end(args);
 }
 
 
-std::string Operation(std::string(*)(int, const std::string*), const std::string*)
+std::string Mult(const std::string& num1, const std::string& num2)
 {
-    return "";
+    std::cout << "DEBUG/ " << "return " << num1 << "+" << num2 << '\n';
+    return num2; // TODO implement
 }
 
-std::string Operation(std::string(*)(int, const std::string*), ...)
+std::string Mult(int numOfArgs, const std::string* args)
 {
-    return "";
+    std::string sum = "0";
+    while((numOfArgs--) > 0)
+        sum = Mult(sum, args[numOfArgs]);
+    return sum;
 }
 
-void Operation(std::string*, std::string(*)(int, const std::string*), const std::string*)
+std::string Mult(int numOfArgs, ...)
+{
+    std::string sum = "1";
+    va_list args;
+    va_start(args, numOfArgs);
+    while((numOfArgs--) > 0)
+        sum = Mult(sum, *va_arg(args, std::string*));
+    va_end(args);
+    return sum;
+}
+
+void Mult(std::string* ret, int numOfArgs, const std::string* args)
+{
+    *ret = Mult(numOfArgs, args);
+}
+
+void Mult(std::string* ret, int numOfArgs, ...)
+{
+    va_list args;
+    va_start(args, numOfArgs);
+    *ret = Mult(numOfArgs, args);
+    va_end(args);
+}
+
+void Mult(std::string& ret, int numOfArgs, const std::string* args)
+{
+    ret = Mult(numOfArgs, args);
+}
+
+void Mult(std::string& ret, int numOfArgs, ...)
+{
+    va_list args;
+    va_start(args, numOfArgs);
+    ret = Mult(numOfArgs, args);
+    va_end(args);
+}
+
+
+std::string Operation(std::string(*fun)(int, const std::string*), int numOfArgs, const std::string* args)
+{
+    return fun(numOfArgs, args);
+}
+
+std::string Operation(std::string(*fun)(int, const std::string*), int numOfArgs, ...)
 {
 }
 
-void Operation(std::string*, std::string(*)(int, const std::string*), ...)
+void Operation(std::string* ret, std::string(*fun)(int, const std::string*), int numOfArgs, const std::string* args)
+{
+    *ret = fun(numOfArgs, args);
+}
+
+void Operation(std::string* ret, std::string(*fun)(int, const std::string*), int numOfArgs, ...)
 {
 }
 
-void Operation(std::string&, std::string(*)(int, const std::string*), const std::string*)
+void Operation(std::string& ret, void(*fun)(std::string*, int, const std::string*), int numOfArgs, const std::string* args)
 {
+    fun(&ret, numOfArgs, args);
 }
 
-void Operation(std::string&, std::string(*)(int, const std::string*), ...)
+void Operation(std::string& ret, void(*fun)(std::string*, int, const std::string*), int numOfArgs, ...)
 {
+    std::string* nextArg = NULL;
+    va_list args;
+    va_start(args, numOfArgs);
+    while((numOfArgs--) > 0)
+        nextArg = va_arg(args, std::string*);
+    va_end(args);
 }

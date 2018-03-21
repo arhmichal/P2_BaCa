@@ -16,9 +16,12 @@ void Mult(std::string*, int, ...);
 void Mult(std::string&, int, const std::string*);
 void Mult(std::string&, int, ...);
 
-std::string Operation(std::string(*)(int, const std::string*), const std::string*);
-std::string Operation(std::string(*)(int, const std::string*), ...);
-void Operation(std::string*, std::string(*)(int, const std::string*), const std::string*);
-void Operation(std::string*, std::string(*)(int, const std::string*), ...);
-void Operation(std::string&, std::string(*)(int, const std::string*), const std::string*);
-void Operation(std::string&, std::string(*)(int, const std::string*), ...);
+std::string Operation(std::string(*)(int, const std::string*), int, const std::string*);
+std::string Operation(std::string(*)(int, const std::string*), int, ...);
+void Operation(std::string*, std::string(*)(int, const std::string*), int, const std::string*);
+void Operation(std::string*, std::string(*)(int, const std::string*), int, ...);
+void Operation(std::string&, void(*)(std::string*, int, const std::string*), int, const std::string*);
+void Operation(std::string&, void(*)(std::string*, int, const std::string*), int, ...);
+
+std::string Sum(const std::string&, const std::string&);
+std::string Mult(const std::string&, const std::string&);

@@ -19,33 +19,33 @@
 
 * Zadanie polega na implementacji zbioru podprogramów zgodnych z poniższymi nagłówkami:
 ```c++
-string Sum(int, const string*);
-string Sum(int, ...);
-void Sum(string*, int, const string*);
-void Sum(string*, int, ...);
-void Sum(string&, int, const string*);
-void Sum(string&, int, ...);
+std::string Sum(int, const std::string*);
+std::string Sum(int, ...);
+void Sum(std::string*, int, const std::string*);
+void Sum(std::string*, int, ...);
+void Sum(std::string&, int, const std::string*);
+void Sum(std::string&, int, ...);
 
-string Mult(int, const string*);
-string Mult(int, ...);
-void Mult(string*, int, const string*);
-void Mult(string*, int, ...);
-void Mult(string&, int, const string*);
-void Mult(string&, int, ...);
+std::string Mult(int, const std::string*);
+std::string Mult(int, ...);
+void Mult(std::string*, int, const std::string*);
+void Mult(std::string*, int, ...);
+void Mult(std::string&, int, const std::string*);
+void Mult(std::string&, int, ...);
 
-string Operation(string(*)(int, const string*), const string*);
-string Operation(string(*)(int, const string*), ...);
-void Operation(string*, string(*)(int, const string*), const string*);
-void Operation(string*, string(*)(int, const string*), ...);
-void Operation(string&, string(*)(int, const string*), const string*);
-void Operation(string&, string(*)(int, const string*), ...);
+std::string Operation(std::string(*)(int, const std::string*), int, const std::string*);
+std::string Operation(std::string(*)(int, const std::string*), int, ...);
+void Operation(std::string*, std::string(*)(int, const std::string*), int, const std::string*);
+void Operation(std::string*, std::string(*)(int, const std::string*), int, ...);
+void Operation(std::string&, void(*)(std::string*, int, const std::string*), int, const std::string*);
+void Operation(std::string&, void(*)(std::string*, int, const std::string*), int, ...);
 ```
-* Podprogramy o nazwach ```Sum``` oraz ```Mult``` implementyją odpowiednio sumowanie oraz mnożenie dowolnie dużych liczb całkowitych w dowolnej dużel ilości, z argumentami i zwracanymi wartościami przekazywanymi w formie ciągów znakowych.
+* Podprogramy o nazwach ```Sum``` oraz ```Mult``` implementyją odpowiednio sumowanie oraz mnożenie dowolnie dużych liczb całkowitych w dowolnej dużej ilości, z argumentami i zwracanymi wartościami przekazywanymi w formie ciągów znakowych.
 * Podprogramy o identyfikatorach ```Operation``` implementują możliwość zastosowania w pojedyńczym wywołaniu jednego z podprogramów ```Sum``` lub ```Mult``` przekazywanego w argumencie wraz z pozostałymi koniecznymi argumentami
 * Ponadto:
   * Wartości zwracane przez podprogramy zawsze służą przekazaniu wyników działań.
   * Argumenty całkowite zawsze oznaczają ilość argumentów działań i wynoszą nie mniej niż 2.
-  * Pierwsze zrgumenty wskaźnikowe lub referencyjne zawsze służą zwruceniu efektów działań.
+  * Pierwsze argumenty wskaźnikowe lub referencyjne zawsze służą zwruceniu efektów działań.
   * Ostatnie argumenty wskaźnikowe służą przekazaniu liczb podlegających działaniom.
   * Argumenty adresowe podprogramów odnoszą się do istniejących podprogramów `Sum` lub `Mult`.
 * W przekazywanym ba BaCę kodzie źródłowym nie jest możliwe włączenie jakichkolwiek plików, ale można założyć dostepność plików nagłówkowych `iostream`, `string`, `cstdarg`.
