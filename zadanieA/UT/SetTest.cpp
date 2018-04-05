@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "BitSetLib.hpp"
+#include "set/SetUtils.hpp"
 #include "CommonValues.hpp"
 
 using namespace testing;

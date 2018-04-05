@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -22,33 +24,3 @@ bool LessThen(int, int);
 bool LessEqual(int, int);
 bool GreatEqual(int, int);
 bool GreatThen(int, int);
-
-namespace math
-{
-
-bool odd(unsigned x);
-
-unsigned addOne(unsigned x);
-unsigned add(unsigned x, unsigned toAdd, unsigned alreadyAdded);
-unsigned add(unsigned x, unsigned toAdd);
-
-unsigned subOne(unsigned x);
-unsigned sub(unsigned x, unsigned toSub, unsigned alreadySubbed);
-unsigned sub(unsigned x, unsigned toSub);
-
-}
-
-namespace set
-{
-
-const unsigned invert(unsigned set1);
-const unsigned sum(unsigned set1, unsigned set2);
-const unsigned intersect(unsigned set1, unsigned set2);
-const unsigned symmetricDifference(unsigned set1, unsigned set2);
-const unsigned difference(unsigned set1, unsigned set2);
-
-const unsigned setSize(unsigned set);
-
-int push_back(int& out, char charValue);
-
-}
