@@ -1,5 +1,7 @@
 project(zadanieB)
 
+include_directories(.)
+
 add_library(zadanieB STATIC
         FunctionsLib.hpp
         FunctionsLib.cpp
