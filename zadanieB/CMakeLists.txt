@@ -5,7 +5,9 @@ include_directories(src)
 include_directories(UT)
 
 add_executable(ZadanieB_UT
-        UT/EmptyTest.cpp
+        UT/SupportFunctionsTest.cpp
+        UT/MathAddingOnStringsTest.cpp
+        UT/MathSubstitutingOnStringsTest.cpp
         )
 
 target_link_libraries(ZadanieB_UT zadanieB gtest_main gtest gmock)

@@ -1,138 +1,192 @@
 #include "FunctionsLib.hpp"
 
-std::string Sum(const std::string& num1, const std::string& num2)
-{
-    std::cout << "DEBUG/ " << "return " << num1 << "+" << num2 << '\n';
-    return num2; // TODO implement
-}
+using namespace VariadicArgsUtils;
+using namespace MyMathOnStrings;
 
 std::string Sum(int numOfArgs, const std::string* args)
 {
-    std::string sum = "0";
-    while((numOfArgs--) > 0)
-        sum = Sum(sum, args[numOfArgs]);
-    return sum;
+    ARHLOG_DBG<< "(int numOfArgs, const std::string* args)";
+    std::string ret = "0";
+    while ((numOfArgs--) > 0)
+        ret = add(ret, args[numOfArgs]);
+    return ret;
 }
 
 std::string Sum(int numOfArgs, ...)
 {
-    std::string sum = "0";
-    va_list args;
-    va_start(args, numOfArgs);
-    while((numOfArgs--) > 0)
-        sum = Sum(sum, *va_arg(args, std::string*));
-    va_end(args);
-    return sum;
+    ARHLOG_DBG<< "int numOfArgs, ...)";
+
+    va_list variadicArgs;
+    va_start(variadicArgs, numOfArgs);
+    std::string* args = createNewStringArrayFromVariadicArguments(numOfArgs, variadicArgs);
+
+    std::string ret = Sum(numOfArgs, args);
+
+    delete[] args;
+    return ret;
 }
 
 void Sum(std::string* ret, int numOfArgs, const std::string* args)
 {
+    ARHLOG_DBG<< "std::string* ret, int numOfArgs, const std::string* args)";
     *ret = Sum(numOfArgs, args);
 }
 
 void Sum(std::string* ret, int numOfArgs, ...)
 {
-    va_list args;
-    va_start(args, numOfArgs);
-    *ret = Sum(numOfArgs, args);
-    va_end(args);
+    ARHLOG_DBG<< "std::string* ret, int numOfArgs, ...)";
+
+    va_list variadicArgs;
+    va_start(variadicArgs, numOfArgs);
+    std::string* args = createNewStringArrayFromVariadicArguments(numOfArgs, variadicArgs);
+
+    Sum(ret, numOfArgs, args);
+
+    delete[] args;
 }
 
 void Sum(std::string& ret, int numOfArgs, const std::string* args)
 {
+    ARHLOG_DBG<< "std::string& ret, int numOfArgs, const std::string* args)";
     ret = Sum(numOfArgs, args);
 }
 
 void Sum(std::string& ret, int numOfArgs, ...)
 {
-    va_list args;
-    va_start(args, numOfArgs);
-    ret = Sum(numOfArgs, args);
-    va_end(args);
+    ARHLOG_DBG<< "std::string& ret, int numOfArgs, ...)";
+
+    va_list variadicArgs;
+    va_start(variadicArgs, numOfArgs);
+    std::string* args = createNewStringArrayFromVariadicArguments(numOfArgs, variadicArgs);
+
+    Sum(ret, numOfArgs, args);
+
+    delete[] args;
 }
 
 
-std::string Mult(const std::string& num1, const std::string& num2)
-{
-    std::cout << "DEBUG/ " << "return " << num1 << "+" << num2 << '\n';
-    return num2; // TODO implement
-}
+
+
 
 std::string Mult(int numOfArgs, const std::string* args)
 {
-    std::string sum = "0";
-    while((numOfArgs--) > 0)
-        sum = Mult(sum, args[numOfArgs]);
-    return sum;
+    ARHLOG_DBG<< "int numOfArgs, const std::string* args)";
+    std::string ret = "0";
+    while ((numOfArgs--) > 0)
+        ret = mult(ret, args[numOfArgs]);
+    return ret;
 }
 
 std::string Mult(int numOfArgs, ...)
 {
-    std::string sum = "1";
-    va_list args;
-    va_start(args, numOfArgs);
-    while((numOfArgs--) > 0)
-        sum = Mult(sum, *va_arg(args, std::string*));
-    va_end(args);
-    return sum;
+    ARHLOG_DBG<< "int numOfArgs, ...)";
+
+    va_list variadicArgs;
+    va_start(variadicArgs, numOfArgs);
+    std::string* args = createNewStringArrayFromVariadicArguments(numOfArgs, variadicArgs);
+
+    std::string ret = Mult(numOfArgs, args);
+
+    delete[] args;
+    return ret;
 }
 
 void Mult(std::string* ret, int numOfArgs, const std::string* args)
 {
+    ARHLOG_DBG<< "std::string* ret, int numOfArgs, const std::string* args)";
     *ret = Mult(numOfArgs, args);
 }
 
 void Mult(std::string* ret, int numOfArgs, ...)
 {
-    va_list args;
-    va_start(args, numOfArgs);
-    *ret = Mult(numOfArgs, args);
-    va_end(args);
+    ARHLOG_DBG<< "std::string* ret, int numOfArgs, ...)";
+
+    va_list variadicArgs;
+    va_start(variadicArgs, numOfArgs);
+    std::string* args = createNewStringArrayFromVariadicArguments(numOfArgs, variadicArgs);
+
+    Mult(ret, numOfArgs, args);
+
+    delete[] args;
 }
 
 void Mult(std::string& ret, int numOfArgs, const std::string* args)
 {
+    ARHLOG_DBG<< "std::string& ret, int numOfArgs, const std::string* args)";
     ret = Mult(numOfArgs, args);
 }
 
 void Mult(std::string& ret, int numOfArgs, ...)
 {
-    va_list args;
-    va_start(args, numOfArgs);
-    ret = Mult(numOfArgs, args);
-    va_end(args);
+    ARHLOG_DBG<< "std::string& ret, int numOfArgs, ...)";
+
+    va_list variadicArgs;
+    va_start(variadicArgs, numOfArgs);
+    std::string* args = createNewStringArrayFromVariadicArguments(numOfArgs, variadicArgs);
+
+    Mult(ret, numOfArgs, args);
+
+    delete[] args;
 }
 
 
-std::string Operation(std::string(*fun)(int, const std::string*), int numOfArgs, const std::string* args)
+
+
+
+std::string Operation(std::string(* fun)(int, const std::string*), int numOfArgs, const std::string* args)
 {
+    ARHLOG_DBG<< "(std::string(* fun)(int, const std::string*), int numOfArgs, const std::string* args)";
     return fun(numOfArgs, args);
 }
 
-std::string Operation(std::string(*fun)(int, const std::string*), int numOfArgs, ...)
+std::string Operation(std::string(* fun)(int, const std::string*), int numOfArgs, ...)
 {
+    ARHLOG_DBG<< "(std::string(* fun)(int, const std::string*), int numOfArgs, ...)";
+
+    va_list variadicArgs;
+    va_start(variadicArgs, numOfArgs);
+    std::string* args = createNewStringArrayFromVariadicArguments(numOfArgs, variadicArgs);
+
+    std::string ret = Operation(fun, numOfArgs, args);
+
+    delete[] args;
+    return ret;
 }
 
-void Operation(std::string* ret, std::string(*fun)(int, const std::string*), int numOfArgs, const std::string* args)
+void Operation(std::string* ret, std::string(* fun)(int, const std::string*), int numOfArgs, const std::string* args)
 {
+    ARHLOG_DBG<< "(std::string* ret, std::string(* fun)(int, const std::string*), int numOfArgs, const std::string* args)";
     *ret = fun(numOfArgs, args);
 }
 
-void Operation(std::string* ret, std::string(*fun)(int, const std::string*), int numOfArgs, ...)
+void Operation(std::string* ret, std::string(* fun)(int, const std::string*), int numOfArgs, ...)
 {
+    ARHLOG_DBG<< "(std::string* ret, std::string(* fun)(int, const std::string*), int numOfArgs, ...)";
+
+    va_list variadicArgs;
+    va_start(variadicArgs, numOfArgs);
+    std::string* args = createNewStringArrayFromVariadicArguments(numOfArgs, variadicArgs);
+
+    Operation(ret, fun, numOfArgs, args);
+
+    delete[] args;
 }
 
-void Operation(std::string& ret, void(*fun)(std::string*, int, const std::string*), int numOfArgs, const std::string* args)
+void Operation(std::string& ret, void(* fun)(std::string*, int, const std::string*), int numOfArgs, const std::string* args)
 {
+    ARHLOG_DBG<< "(std::string& ret, void(* fun)(std::string*, int, const std::string*), int numOfArgs, const std::string* args)";
     fun(&ret, numOfArgs, args);
 }
 
-void Operation(std::string& ret, void(*fun)(std::string*, int, const std::string*), int numOfArgs, ...)
+void Operation(std::string& ret, void(* fun)(std::string*, int, const std::string*), int numOfArgs, ...)
 {
-    std::string* nextArg = NULL;
-    va_list args;
-    va_start(args, numOfArgs);
-    while((numOfArgs--) > 0)
-        nextArg = va_arg(args, std::string*);
-    va_end(args);
+    ARHLOG_DBG<< "(std::string& ret, void(* fun)(std::string*, int, const std::string*), int numOfArgs, ...)";
+
+    va_list variadicArgs;
+    va_start(variadicArgs, numOfArgs);
+    std::string* args = createNewStringArrayFromVariadicArguments(numOfArgs, variadicArgs);
+
+    Operation(ret, fun, numOfArgs, args);
+
+    delete[] args;
 }

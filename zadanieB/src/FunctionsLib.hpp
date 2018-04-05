@@ -2,6 +2,13 @@
 #include <string>
 #include <cstdarg>
 
+#include "Logger.hpp"
+
+#include "VariadicArgsUtils.hpp"
+#include "MyMathOnStrings/Utils.hpp"
+#include "MyMathOnStrings/Addition.hpp"
+#include "MyMathOnStrings/Multiplication.hpp"
+
 std::string Sum(int, const std::string*);
 std::string Sum(int, ...);
 void Sum(std::string*, int, const std::string*);
@@ -22,6 +29,3 @@ void Operation(std::string*, std::string(*)(int, const std::string*), int, const
 void Operation(std::string*, std::string(*)(int, const std::string*), int, ...);
 void Operation(std::string&, void(*)(std::string*, int, const std::string*), int, const std::string*);
 void Operation(std::string&, void(*)(std::string*, int, const std::string*), int, ...);
-
-std::string Sum(const std::string&, const std::string&);
-std::string Mult(const std::string&, const std::string&);
