@@ -9,9 +9,10 @@ add_library(zadanieB STATIC
         VariadicArgsUtils.cpp
         MathOnStrings/Utils.hpp
         MathOnStrings/Utils.cpp
-
         MathOnStrings/Add.hpp
         MathOnStrings/Add.cpp
+        MathOnStrings/Mult.hpp
+        MathOnStrings/Mult.cpp
         )
 
 target_link_libraries(zadanieB logger)

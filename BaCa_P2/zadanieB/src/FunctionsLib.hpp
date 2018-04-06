@@ -7,9 +7,6 @@
 #include "Logger.hpp"
 
 #include "VariadicArgsUtils.hpp"
-#include "MathOnStrings/Utils.hpp"
-//#include "MathOnStrings/Addition.hpp"
-//#include "MathOnStrings/Multiplication.hpp"
 
 std::string Sum(int, const std::string*);
 std::string Sum(int, ...);
