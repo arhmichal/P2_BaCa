@@ -7,12 +7,11 @@ add_library(zadanieB STATIC
         FunctionsLib.cpp
         VariadicArgsUtils.hpp
         VariadicArgsUtils.cpp
-        MyMathOnStrings/Utils.hpp
-        MyMathOnStrings/Utils.cpp
-        MyMathOnStrings/Addition.hpp
-        MyMathOnStrings/Addition.cpp
-        MyMathOnStrings/Multiplication.hpp
-        MyMathOnStrings/Multiplication.cpp
+        MathOnStrings/Utils.hpp
+        MathOnStrings/Utils.cpp
+
+        MathOnStrings/Add.hpp
+        MathOnStrings/Add.cpp
         )
 
 target_link_libraries(zadanieB logger)

@@ -1,8 +1,9 @@
 #include "gtest/gtest.h"
-#include "MyMathOnStrings/Utils.hpp"
+#include "MathOnStrings/Utils.hpp"
 
 using namespace testing;
-using namespace MyMathOnStrings::Utils;
+using namespace MathOnStrings::Utils;
+using namespace MathOnStrings::U10;
 
 TEST(SupportFunctionsTest, sign)
 {
@@ -13,27 +14,40 @@ TEST(SupportFunctionsTest, sign)
     EXPECT_EQ("+", sign("+043232554"));
 }
 
-TEST(SupportFunctionsTest, abs)
+TEST(SupportFunctionsTest, noSign)
 {
-    EXPECT_EQ("0", absVal("0"));
-    EXPECT_EQ("0", absVal("+0"));
-    EXPECT_EQ("0", absVal("-0"));
-    EXPECT_EQ("043232554", absVal("-043232554"));
-    EXPECT_EQ("043232554", absVal("+043232554"));
+    EXPECT_EQ("0", noSign("0"));
+    EXPECT_EQ("0", noSign("+0"));
+    EXPECT_EQ("0", noSign("-0"));
+    EXPECT_EQ("043232554", noSign("-043232554"));
+    EXPECT_EQ("043232554", noSign("+043232554"));
+    EXPECT_EQ("123", noSign("123"));
+    EXPECT_EQ("0123", noSign("0123"));
 }
 
-TEST(SupportFunctionsTest, removePrefixZeros)
+TEST(SupportFunctionsTest, stripFrontZeros)
 {
-    EXPECT_EQ("0", removePrefixZeros("0000"));
-    EXPECT_EQ("0", removePrefixZeros("0"));
-    EXPECT_EQ("43232554", removePrefixZeros("000043232554"));
-    EXPECT_EQ("43232554", removePrefixZeros("43232554"));
+    EXPECT_EQ("0", stripFrontZeros(""));
+    EXPECT_EQ("10000", stripFrontZeros("10000"));
+    EXPECT_EQ("0", stripFrontZeros("00"));
+    EXPECT_EQ("0", stripFrontZeros("0000"));
+    EXPECT_EQ("0", stripFrontZeros("00000"));
+    EXPECT_EQ("23", stripFrontZeros("0023"));
+}
+
+TEST(SupportFunctionsTest, extendToLength)
+{
+    EXPECT_EQ("0000", extendToLength("", 4));
+    EXPECT_EQ("0000", extendToLength("00", 4));
+    EXPECT_EQ("0000", extendToLength("0000", 4));
+    EXPECT_EQ("00000", extendToLength("00000", 4));
+    EXPECT_EQ("0023", extendToLength("23", 4));
 }
 
 TEST(SupportFunctionsTest, normalizeNumber)
 {
     EXPECT_EQ("+0", normalizeNumber("0"));
-    EXPECT_EQ("-0", normalizeNumber("-0"));
+    EXPECT_EQ("+0", normalizeNumber("-0"));
     EXPECT_EQ("+0", normalizeNumber("+0"));
     EXPECT_EQ("+43232554", normalizeNumber("000043232554"));
     EXPECT_EQ("+43232554", normalizeNumber("+000043232554"));
@@ -56,67 +70,58 @@ TEST(SupportFunctionsTest, normalizeResult)
     EXPECT_EQ("-43232554", normalizeResult("-43232554"));
 }
 
-TEST(SupportFunctionsTest, at)
+TEST(SupportFunctionsTest, encodeSign)
 {
-    EXPECT_EQ('6', at("123098456", 0));
-    EXPECT_EQ('0', at("123098456", 5));
-    EXPECT_EQ('0', at("123098456", 9));
-    EXPECT_EQ('0', at("123098456", 30));
+    EXPECT_EQ("0", encodeSign("+"));
+    EXPECT_EQ("1", encodeSign("-"));
 }
 
-TEST(SupportFunctionsTest, trunkLastDigit)
+TEST(SupportFunctionsTest, encodeDigits)
 {
-    EXPECT_EQ("", trunkLastDigit(""));
-    EXPECT_EQ("", trunkLastDigit("0"));
-    EXPECT_EQ("", trunkLastDigit("1"));
-    EXPECT_EQ("1", trunkLastDigit("12"));
+    EXPECT_EQ("9", encodeDigits("1"));
+    EXPECT_EQ("877", encodeDigits("123"));
+    EXPECT_EQ("9987700", encodeDigits("0012300"));
 }
 
-TEST(SupportFunctionsTest, flipCompleatTo9_singleDigit)
+TEST(SupportFunctionsTest, encodeU10_zero)
 {
-    EXPECT_EQ("9", flipCompleatTo9("0"));
-    EXPECT_EQ("8", flipCompleatTo9("1"));
-    EXPECT_EQ("7", flipCompleatTo9("2"));
-    EXPECT_EQ("6", flipCompleatTo9("3"));
-    EXPECT_EQ("5", flipCompleatTo9("4"));
-    EXPECT_EQ("4", flipCompleatTo9("5"));
-    EXPECT_EQ("3", flipCompleatTo9("6"));
-    EXPECT_EQ("2", flipCompleatTo9("7"));
-    EXPECT_EQ("1", flipCompleatTo9("8"));
-    EXPECT_EQ("0", flipCompleatTo9("9"));
+    EXPECT_EQ("00", encodeU10("+0"));
 }
 
-TEST(SupportFunctionsTest, flipCompleatTo9_longerNumbers)
+TEST(SupportFunctionsTest, encodeU10_positive)
 {
-    EXPECT_EQ("8765432109", flipCompleatTo9("1234567890"));
-    EXPECT_EQ("0126831564571", flipCompleatTo9("9873168435428"));
+    EXPECT_EQ("01", encodeU10("1"));
+    EXPECT_EQ("01", encodeU10("+1"));
+    EXPECT_EQ("0123567345", encodeU10("123567345"));
+    EXPECT_EQ("0123567345", encodeU10("+123567345"));
+    EXPECT_EQ("0000012300", encodeU10("000012300"));
+    EXPECT_EQ("0000012300", encodeU10("+000012300"));
 }
 
-TEST(SupportFunctionsTest, flipU10_singleDigit)
+TEST(SupportFunctionsTest, encodeU10_negative)
 {
-    EXPECT_EQ("10", flipU10("0"));
-    EXPECT_EQ("9", flipU10("1"));
-    EXPECT_EQ("8", flipU10("2"));
-    EXPECT_EQ("7", flipU10("3"));
-    EXPECT_EQ("6", flipU10("4"));
-    EXPECT_EQ("5", flipU10("5"));
-    EXPECT_EQ("4", flipU10("6"));
-    EXPECT_EQ("3", flipU10("7"));
-    EXPECT_EQ("2", flipU10("8"));
-    EXPECT_EQ("1", flipU10("9"));
+    EXPECT_EQ("19", encodeU10("-1"));
+    EXPECT_EQ("11", encodeU10("-9"));
+    EXPECT_EQ("1876432655", encodeU10("-123567345"));
+    EXPECT_EQ("1999987700", encodeU10("-000012300"));
 }
 
-TEST(SupportFunctionsTest, flipU10)
+TEST(SupportFunctionsTest, decodeU10_zero)
 {
-    EXPECT_EQ("8765432110", flipU10("1234567890"));
-    EXPECT_EQ("126831564572", flipU10("9873168435428"));
+    EXPECT_EQ("00", decodeU10("00"));
 }
 
-TEST(SupportFunctionsTest, extendToLength)
+TEST(SupportFunctionsTest, decodeU10_positive)
 {
-    EXPECT_EQ("0000", extendToLength("", 4));
-    EXPECT_EQ("0000", extendToLength("00", 4));
-    EXPECT_EQ("0000", extendToLength("0000", 4));
-    EXPECT_EQ("00000", extendToLength("00000", 4));
-    EXPECT_EQ("0023", extendToLength("23", 4));
+    EXPECT_EQ("01", decodeU10("01"));
+    EXPECT_EQ("0123567345", decodeU10("0123567345"));
+    EXPECT_EQ("0000012300", decodeU10("0000012300"));
+}
+
+TEST(SupportFunctionsTest, decodeU10_negative)
+{
+    EXPECT_EQ("-1", decodeU10("19"));
+    EXPECT_EQ("-9", decodeU10("11"));
+    EXPECT_EQ("-123567345", decodeU10("1876432655"));
+    EXPECT_EQ("-000012300", decodeU10("1999987700"));
 }

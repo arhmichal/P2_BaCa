@@ -1,7 +1,8 @@
-#include "FunctionsLib.hpp"
+#include <FunctionsLib.hpp>
+#include <MathOnStrings/Add.hpp>
 
 using namespace VariadicArgsUtils;
-using namespace MyMathOnStrings;
+using namespace MathOnStrings;
 
 std::string Sum(int numOfArgs, const std::string* args)
 {
@@ -72,8 +73,8 @@ std::string Mult(int numOfArgs, const std::string* args)
 {
     ARHLOG_DBG<< "int numOfArgs, const std::string* args)";
     std::string ret = "0";
-    while ((numOfArgs--) > 0)
-        ret = mult(ret, args[numOfArgs]);
+//    while ((numOfArgs--) > 0)
+//        ret = mult(ret, args[numOfArgs]);
     return ret;
 }
 
