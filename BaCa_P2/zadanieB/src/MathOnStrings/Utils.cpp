@@ -63,7 +63,7 @@ namespace U10
 
 using namespace Utils;
 
-std::string decodeU10(const std::string& num) // TODO
+std::string decodeU10(const std::string& num)
 {
     if (num[0] == '1')
         return "-" + encodeDigits(num.substr(1));

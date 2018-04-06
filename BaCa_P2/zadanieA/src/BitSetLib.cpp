@@ -3,7 +3,7 @@
 #include "math/MathUtils.hpp"
 
 // string jest formatu "\s*[01]{5}\s*", przekonwertuj do inta
-void Emplace(std::string in, int* out) // TODO length dependency
+void Emplace(std::string in, int* out) // IMPORTANT length dependency
 {
     if (in.length() == 0)
         return;
